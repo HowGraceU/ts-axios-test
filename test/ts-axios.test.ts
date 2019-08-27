@@ -1,4 +1,4 @@
-import DummyClass from '../src/ts-axios'
+import tsAxios from '../src'
 
 /**
  * Dummy test
@@ -7,8 +7,20 @@ describe('Dummy test', () => {
   it('works if true is truthy', () => {
     expect(true).toBeTruthy()
   })
+})
 
-  it('DummyClass is instantiable', () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
+describe('GET test', () => {
+  it('get method no params', () => {
+    tsAxios({
+      method: 'get',
+      url: '/simple/get',
+      params: {
+        a: 1,
+        b: 2
+      },
+      cb: data => {
+        expect(data).toEqual('/simple/get')
+      }
+    })
   })
 })
